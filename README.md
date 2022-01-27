@@ -25,7 +25,7 @@ minikube image load strapi-demo
 Run the following command to install the chart:
 
 ```sh
-helm upgrade --install -n strapi strapi-demo .
+helm upgrade --install --create-namespace -n strapi strapi-demo .
 ```
 
 Run the following command to allow ingress
