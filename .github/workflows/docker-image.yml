@@ -12,6 +12,7 @@ jobs:
     
     env:
       TAG: ${{ github.sha }}
+      REGISTRY: ghcr.io
     
     runs-on: ubuntu-latest
 
@@ -21,7 +22,11 @@ jobs:
       run: docker build . --file Dockerfile --tag strapi-demo:$TAG
     - name: Tag
       run: docker tag strapi-demo:$TAG ghcr.io/jaxwood/strapi-demo:$TAG
+    - name: Log in to the Container registry
+      uses: docker/login-action@42d299face0c5c43a0487c477f595ac9cf22f1a7
+      with:
+        registry: ${{ env.REGISTRY }}
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
     - name: Push
       run: docker push ghcr.io/jaxwood/strapi-demo:$TAG
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
