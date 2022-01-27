@@ -17,6 +17,6 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag strapi-demo:$(date +%s)
     - name: Push the Docker image
-      run: docker push ghcr.io/Jaxwood/strapi-demo:$(date +%s)
+      run: docker push ghcr.io/jaxwood/strapi-demo:$(date +%s)
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
