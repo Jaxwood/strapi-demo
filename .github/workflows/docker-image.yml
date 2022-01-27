@@ -14,9 +14,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Build the Docker image
+    - name: Build
       run: docker build . --file Dockerfile --tag strapi-demo:$(date +%s)
-    - name: Push the Docker image
+    - name: Tag
+      run: docker tag strapi-demo:$(date +%s) ghcr.io/jaxwood/strapi-demo:$(date +%s)
+    - name: Push
       run: docker push ghcr.io/jaxwood/strapi-demo:$(date +%s)
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
