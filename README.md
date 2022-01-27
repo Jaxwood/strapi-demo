@@ -1,5 +1,7 @@
 # 🚀 Strapi Demo
 
+[![Docker Image CI](https://github.com/Jaxwood/strapi-demo/actions/workflows/docker-image.yml/badge.svg?branch=main)](https://github.com/Jaxwood/strapi-demo/actions/workflows/docker-image.yml)
+
 ## Docker
 
 Run the following command to build the image:
