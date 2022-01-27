@@ -9,15 +9,18 @@ on:
 jobs:
 
   build:
-
+    
+    env:
+      tag: $(date +%s)
+    
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
     - name: Build
-      run: docker build . --file Dockerfile --tag strapi-demo:$(date +%s)
+      run: docker build . --file Dockerfile --tag strapi-demo:${tag}
     - name: Tag
-      run: docker tag strapi-demo:$(date +%s) ghcr.io/jaxwood/strapi-demo:$(date +%s)
+      run: docker tag strapi-demo:${tag} ghcr.io/jaxwood/strapi-demo:${tag}
     - name: Push
       run: docker push ghcr.io/jaxwood/strapi-demo:$(date +%s)
       env:
